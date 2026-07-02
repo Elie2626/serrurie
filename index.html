@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RhoneSerrurie — Serrurier à Lyon — Dépannage 24h/24 · Ouverture de porte, serrures, blindage</title>
+<meta name="description" content="Serrurier à Lyon et sa métropole. Ouverture de porte sans dégât, remplacement de serrure, blindage. Urgence 24h/24, prix annoncé avant intervention.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* palette tirée de la photo : porte graphite, métal brossé, lumière chaude */
+  --bg:#232120;
+  --bg-deep:#1B1A19;
+  --panel:#2C2A28;
+  --panel-2:#343230;
+  --line:#3E3B38;
+  --line-strong:#4C4844;
+  --steel:#C9C8CC;
+  --steel-soft:#9C9BA0;
+  --steel-deep:#77767B;
+  --warm:#CBB89D;           /* halo lumineux chaud de la photo */
+  --text:#ECEAE6;
+  --muted:#A39F98;
+  --success:#7FB78F;
+  --error:#D08770;
+  --font-display:'Marcellus',Georgia,serif;
+  --font-body:'Manrope',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+body{
+  font-family:var(--font-body);
+  background:
+    radial-gradient(1200px 700px at 22% 0%,rgba(203,184,157,.07),transparent 55%),
+    linear-gradient(160deg,#262422,#1E1D1B 60%,#232120);
+  background-attachment:fixed;
+  color:var(--text);
+  font-size:16.5px;line-height:1.7;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--steel);color:#1B1A19}
+a,button{touch-action:manipulation}
+:focus-visible{outline:2.5px solid var(--steel);outline-offset:3px;border-radius:4px}
+.skip-link{position:absolute;left:-999px;top:0;background:var(--steel);color:#1B1A19;padding:12px 20px;z-index:300;font-weight:700}
+.skip-link:focus{left:0}
+.wrap{max-width:1140px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+
+/* texte métal brossé */
+.metal{
+  background:linear-gradient(100deg,#8E8D92 0%,#E8E7EB 30%,#B9B8BD 50%,#F2F1F4 66%,#94939A 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.eyebrow{
+  font-size:.72rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--steel-soft);display:flex;align-items:center;gap:16px;
+}
+.eyebrow::before{content:"";width:38px;height:1px;background:var(--line-strong)}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(27,26,25,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1140px;margin:0 auto;padding:0 clamp(20px,5vw,48px);
+  display:flex;align-items:center;justify-content:space-between;min-height:74px;gap:16px;
+}
+.brand{display:flex;align-items:center;gap:13px;text-decoration:none;color:var(--text);min-height:44px}
+.brand-key{width:36px;height:36px;flex:none}
+.brand b{font-family:var(--font-display);font-weight:400;font-size:1.18rem;letter-spacing:.09em;text-transform:uppercase}
+.nav-links{display:none;gap:4px;list-style:none}
+@media(min-width:940px){.nav-links{display:flex}}
+.nav-links a{
+  color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:600;letter-spacing:.02em;
+  padding:12px 15px;display:inline-block;border-radius:8px;transition:color .2s,background .2s;
+}
+.nav-links a:hover{color:var(--text);background:var(--panel)}
+.btn-steel{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;
+  font-weight:800;font-size:.95rem;color:#1B1A19;
+  background:linear-gradient(160deg,#E6E5E9 0%,#B9B8BD 45%,#D8D7DB 55%,#96959B 100%);
+  padding:13px 24px;min-height:46px;border-radius:10px;border:none;cursor:pointer;
+  white-space:nowrap;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 1px 0 rgba(0,0,0,.5),0 10px 26px rgba(0,0,0,.35);
+  transition:filter .2s,transform .12s,box-shadow .2s;
+}
+.btn-steel:hover{filter:brightness(1.08)}
+.btn-steel:active{transform:translateY(1px)}
+.btn-steel svg{width:17px;height:17px;flex:none}
+.btn-line{
+  display:inline-flex;align-items:center;gap:10px;text-decoration:none;min-height:48px;
+  color:var(--text);font-weight:600;font-size:.95rem;padding:14px 24px;border-radius:10px;
+  border:1px solid var(--line-strong);background:rgba(44,42,40,.5);
+  transition:border-color .2s,background .2s,transform .12s;
+}
+.btn-line:hover{border-color:var(--steel-soft);background:var(--panel)}
+.btn-line:active{transform:scale(.98)}
+.btn-line svg{width:15px;height:15px}
+@media(max-width:480px){
+  .nav-inner .btn-steel{padding:11px 14px;font-size:.85rem;gap:7px}
+  .brand b{font-size:1rem}
+  .brand-key{width:30px;height:30px}
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  padding:clamp(64px,9vw,120px) 0 clamp(56px,8vw,96px);
+  position:relative;overflow:hidden;
+  min-height:min(92vh,780px);display:flex;align-items:center;
+  background-image:url('image_fond.png');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+.hero::before{ /* voile sombre pour la lisibilité du texte */
+  content:"";position:absolute;inset:0;z-index:0;
+  background:linear-gradient(90deg,rgba(19,18,17,.9) 0%,rgba(19,18,17,.7) 45%,rgba(19,18,17,.45) 100%);
+}
+.hero .wrap{position:relative;z-index:1;width:100%;max-width:1720px;padding:0 clamp(20px,4.5vw,90px)}
+.hero-grid{display:grid;gap:clamp(40px,6vw,110px);align-items:center}
+@media(min-width:960px){.hero-grid{grid-template-columns:1.05fr 1fr}}
+.hero-video{
+  position:relative;border-radius:16px;overflow:hidden;
+  border:1px solid var(--line-strong);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 40px 80px rgba(0,0,0,.5);
+  aspect-ratio:16/9;align-self:center;width:100%;
+}
+@media(max-width:959px){.hero-video{max-width:560px;justify-self:center}}
+.hero-video video{width:100%;height:100%;object-fit:cover;display:block}
+.hero-video::after{ /* léger voile pour fondre la vidéo dans la page */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 60px rgba(20,19,18,.45);
+}
+.hero h1{
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(2.6rem,5.2vw,5.2rem);line-height:1.06;letter-spacing:.005em;
+  margin:26px 0 22px;
+  text-shadow:0 4px 24px rgba(0,0,0,.4);
+}
+.hero .lede{color:var(--muted);max-width:52ch;font-size:clamp(1rem,1.5vw,1.1rem);margin-bottom:36px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn-steel.big{font-size:1.02rem;padding:17px 32px;min-height:54px;border-radius:12px}
+.hero-facts{
+  display:flex;flex-wrap:wrap;gap:0;margin-top:clamp(40px,6vw,58px);
+  border-top:1px solid var(--line);
+}
+.fact{padding:22px clamp(18px,3vw,34px) 0 0;margin-right:clamp(18px,3vw,34px);border-right:1px solid var(--line)}
+.fact:last-child{border-right:none;margin-right:0}
+.fact b{font-family:var(--font-display);font-weight:400;font-size:clamp(1.35rem,2.4vw,1.7rem);display:block;font-variant-numeric:tabular-nums}
+.fact span{font-size:.8rem;color:var(--muted);letter-spacing:.06em}
+
+/* ---------- SECTIONS ---------- */
+section{padding:clamp(68px,9vw,116px) 0}
+h2.title{
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(1.85rem,4.2vw,2.9rem);line-height:1.16;margin:20px 0 16px;max-width:24ch;
+}
+.section-lede{color:var(--muted);max-width:58ch;margin-bottom:clamp(36px,5vw,56px)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease-out,transform .7s ease-out}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+/* ---------- SERVICES ---------- */
+#services{border-top:1px solid var(--line)}
+.svc-grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+@media(min-width:700px){.svc-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1020px){.svc-grid{grid-template-columns:1fr 1fr 1fr}}
+.svc{
+  background:var(--panel);padding:34px 30px;position:relative;
+  transition:background .25s;
+}
+.svc:hover{background:var(--panel-2)}
+.svc .idx{
+  font-family:var(--font-display);font-size:.95rem;color:var(--steel-deep);
+  letter-spacing:.14em;display:block;margin-bottom:20px;
+}
+.svc h3{font-family:var(--font-display);font-weight:400;font-size:1.3rem;margin-bottom:10px;letter-spacing:.015em}
+.svc p{color:var(--muted);font-size:.92rem}
+.svc .mention{
+  display:inline-block;margin-top:18px;font-size:.7rem;font-weight:800;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--steel-soft);
+  border:1px solid var(--line-strong);padding:6px 13px;border-radius:999px;
+}
+.svc::after{
+  content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;
+  background:linear-gradient(90deg,var(--steel),transparent 80%);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s ease-out;
+}
+.svc:hover::after{transform:scaleX(1)}
+
+/* ---------- URGENCE ---------- */
+#urgence{
+  background:linear-gradient(160deg,#1D1C1A,#161514);
+  border-block:1px solid var(--line);
+}
+.urgence-grid{display:grid;gap:clamp(40px,6vw,80px)}
+@media(min-width:900px){.urgence-grid{grid-template-columns:1.1fr .9fr;align-items:center}}
+.steps{list-style:none;counter-reset:step;border-top:1px solid var(--line)}
+.steps li{
+  counter-increment:step;display:flex;gap:24px;align-items:baseline;
+  padding:23px 2px;border-bottom:1px solid var(--line);
+}
+.steps li::before{
+  content:counter(step,decimal-leading-zero);
+  font-family:var(--font-display);color:var(--steel-soft);font-size:1.05rem;flex:none;
+}
+.steps b{display:block;font-size:1.05rem;font-weight:700;letter-spacing:.01em}
+.steps span{color:var(--muted);font-size:.92rem}
+.urgence-cta{margin-top:36px;display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+.urgence-note{font-size:.85rem;color:var(--muted);max-width:34ch}
+.badge-24{
+  justify-self:center;text-align:center;position:relative;width:min(300px,72vw);aspect-ratio:1;
+  display:grid;place-items:center;
+}
+.badge-24 svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.badge-24 svg{animation:none}}
+.badge-24 svg text{font-family:var(--font-body);font-weight:800;font-size:11px;letter-spacing:3.4px;fill:var(--steel-soft)}
+.badge-24 svg circle{fill:none;stroke:var(--line-strong);stroke-width:1.2}
+.badge-24 .core{
+  font-family:var(--font-display);font-size:clamp(3rem,6vw,4rem);line-height:1;
+}
+.badge-24 .core small{display:block;font-family:var(--font-body);font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+
+/* ---------- TARIFS ---------- */
+.tarif-table{border-top:1px solid var(--line-strong)}
+.tarif-row{
+  display:grid;gap:4px 26px;padding:26px 4px;border-bottom:1px solid var(--line);
+  grid-template-columns:1fr auto;align-items:baseline;transition:background .25s,padding-left .25s;
+}
+@media(min-width:760px){.tarif-row{grid-template-columns:1.3fr 2fr auto}}
+.tarif-row:hover{background:rgba(201,200,204,.04);padding-left:14px}
+.tarif-row h3{font-family:var(--font-display);font-weight:400;font-size:1.25rem;letter-spacing:.015em}
+.tarif-row p{color:var(--muted);font-size:.92rem;grid-column:1 / -1}
+@media(min-width:760px){.tarif-row p{grid-column:auto}}
+.tarif-row .prix{
+  font-family:var(--font-display);font-size:1.35rem;white-space:nowrap;
+  font-variant-numeric:tabular-nums;justify-self:end;
+}
+.tarif-row .prix small{font-family:var(--font-body);font-size:.75rem;color:var(--muted);font-weight:700;letter-spacing:.08em}
+.tarif-note{
+  margin-top:30px;padding:18px 24px;border-left:2px solid var(--steel-deep);
+  background:var(--panel);color:var(--muted);font-size:.9rem;max-width:78ch;border-radius:0 8px 8px 0;
+}
+
+/* ---------- AVIS ---------- */
+#avis{background:linear-gradient(160deg,#1D1C1A,#181716);border-block:1px solid var(--line)}
+.quote{max-width:840px;margin:0 auto;text-align:center}
+.quote .guillemet{font-family:var(--font-display);font-size:4.4rem;line-height:0;display:block;margin-bottom:38px}
+.quote blockquote{
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(1.3rem,3vw,1.9rem);line-height:1.45;
+}
+.quote figcaption{margin-top:30px;font-size:.92rem;color:var(--muted)}
+.quote figcaption b{color:var(--text);font-weight:700}
+.quote-nav{display:flex;justify-content:center;gap:12px;margin-top:36px}
+.quote-nav button{
+  width:48px;height:48px;border-radius:50%;border:1px solid var(--line-strong);
+  background:transparent;color:var(--text);cursor:pointer;display:grid;place-items:center;
+  transition:background .2s,border-color .2s,transform .12s;
+}
+.quote-nav button:hover{background:var(--panel);border-color:var(--steel-soft)}
+.quote-nav button:active{transform:scale(.94)}
+.quote-nav svg{width:17px;height:17px}
+.quote-count{align-self:center;font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums;padding:0 8px}
+
+/* ---------- CONTACT ---------- */
+.contact-grid{display:grid;gap:clamp(40px,6vw,80px)}
+@media(min-width:900px){.contact-grid{grid-template-columns:.85fr 1.15fr}}
+.coord{list-style:none;border-top:1px solid var(--line-strong)}
+.coord li{padding:19px 2px;border-bottom:1px solid var(--line);display:grid;gap:3px}
+.coord .label{font-size:.7rem;font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+.coord a,.coord span{color:var(--text);text-decoration:none;font-size:1.05rem;font-weight:600}
+.coord a:hover{color:var(--steel)}
+form{
+  display:grid;gap:26px;background:var(--panel);border:1px solid var(--line);
+  border-radius:14px;padding:clamp(26px,4vw,40px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 24px 50px rgba(0,0,0,.35);
+}
+.form-2col{display:grid;gap:26px}
+@media(min-width:640px){.form-2col{grid-template-columns:1fr 1fr}}
+.field{display:grid;gap:8px}
+.field label{font-size:.74rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.field label .req{color:var(--steel)}
+.field input,.field select,.field textarea{
+  font:inherit;color:var(--text);background:var(--bg-deep);width:100%;
+  border:1px solid var(--line);border-radius:10px;
+  padding:12px 15px;min-height:48px;
+  transition:border-color .2s;
+}
+.field textarea{resize:vertical;min-height:110px;line-height:1.6}
+.field input::placeholder,.field textarea::placeholder{color:#6E6A64}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--steel-soft)}
+.field .err{display:none;font-size:.82rem;color:var(--error);text-transform:none;letter-spacing:0;font-weight:500}
+.field.invalid input,.field.invalid textarea{border-color:var(--error)}
+.field.invalid .err{display:block}
+.form-status{display:none;align-items:center;gap:10px;font-size:.95rem;font-weight:600;color:var(--success)}
+.form-status.show{display:flex}
+.form-status svg{width:19px;height:19px;flex:none}
+
+/* ---------- FOOTER ---------- */
+footer.site{border-top:1px solid var(--line);padding:34px 0;background:var(--bg-deep)}
+.foot-inner{
+  max-width:1140px;margin:0 auto;padding:0 clamp(20px,5vw,48px);
+  display:flex;flex-wrap:wrap;gap:12px 30px;align-items:center;justify-content:space-between;
+  color:var(--muted);font-size:.85rem;
+}
+
+/* appel flottant mobile */
+.float-call{
+  position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:90;
+  display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+  font-weight:800;color:#1B1A19;
+  background:linear-gradient(160deg,#E6E5E9,#A9A8AE);
+  padding:15px 24px;min-height:52px;border-radius:999px;
+  box-shadow:0 12px 30px rgba(0,0,0,.5);transition:transform .12s;
+}
+.float-call:active{transform:scale(.96)}
+.float-call svg{width:18px;height:18px}
+@media(min-width:940px){.float-call{display:none}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Passer au contenu principal</a>
+
+<nav class="nav" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="RhoneSerrurie — retour en haut">
+      <svg class="brand-key" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="mkey" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#E6E5E9"/><stop offset=".5" stop-color="#A9A8AE"/><stop offset="1" stop-color="#8B8A90"/>
+          </linearGradient>
+        </defs>
+        <circle cx="13" cy="14" r="8" stroke="url(#mkey)" stroke-width="3"/>
+        <path d="M18.5 19.5 32 33M27 28l4-4M30.5 31.5l3.5-3.5" stroke="url(#mkey)" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <b class="metal">RhoneSerrurie</b>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#urgence">Urgence</a></li>
+      <li><a href="#tarifs">Tarifs</a></li>
+      <li><a href="#avis">Avis</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn-steel" href="tel:+33658428199">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      06 58 42 81 99
+    </a>
+  </div>
+</nav>
+
+<main id="main">
+<!-- ======== HERO ======== -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Serrurier à Lyon · 24h/24 — 7j/7</p>
+        <h1>Votre serrurier<br>à <span class="metal">Lyon</span>,<br>sans dégât.</h1>
+        <p class="lede">Ouverture de porte, remplacement de serrure, blindage — dans tous les arrondissements de Lyon et sa métropole (Villeurbanne, Caluire, Bron…). Le prix est annoncé au téléphone avant le déplacement — et c'est celui de la facture.</p>
+        <div class="hero-ctas">
+          <a class="btn-steel big" href="tel:+33658428199">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            06 58 42 81 99
+          </a>
+          <a class="btn-line" href="#contact">Devis gratuit
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="hero-facts" role="list">
+          <div class="fact" role="listitem"><b>30 min</b><span>Arrivée moyenne</span></div>
+          <div class="fact" role="listitem"><b>95 %</b><span>Ouvertures sans dégât</span></div>
+          <div class="fact" role="listitem"><b>24/7</b><span>Nuits &amp; jours fériés</span></div>
+        </div>
+      </div>
+
+      <div class="hero-video">
+        <video src="video_web.mp4" autoplay muted loop playsinline aria-label="Vidéo de présentation : serrurier au travail"></video>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ======== SERVICES ======== -->
+<section id="services">
+  <div class="wrap">
+    <p class="eyebrow reveal">Services</p>
+    <h2 class="title reveal">Un geste précis pour chaque <span class="metal">serrure</span>.</h2>
+    <p class="section-lede reveal">Matériel certifié A2P (Vachette, Bricard, Fichet). Intervention propre, expliquée, garantie par écrit.</p>
+    <div class="svc-grid reveal">
+      <article class="svc">
+        <span class="idx">I.</span>
+        <h3>Ouverture de porte</h3>
+        <p>Porte claquée, clé perdue ou cassée. Ouverture fine à la radio ou au crochetage, sans percer dans 95&nbsp;% des cas.</p>
+        <span class="mention">Urgence 24/7</span>
+      </article>
+      <article class="svc">
+        <span class="idx">II.</span>
+        <h3>Remplacement de serrure</h3>
+        <p>Cylindres haute sécurité, serrures 3 à 7 points. On vous présente les options, vous choisissez, on pose.</p>
+        <span class="mention">Garantie 2 ans</span>
+      </article>
+      <article class="svc">
+        <span class="idx">III.</span>
+        <h3>Blindage de porte</h3>
+        <p>Blindage de votre porte existante ou bloc-porte blindé certifié. Étude gratuite à domicile.</p>
+        <span class="mention">Certifié A2P</span>
+      </article>
+      <article class="svc">
+        <span class="idx">IV.</span>
+        <h3>Après effraction</h3>
+        <p>Sécurisation le soir même, remplacement dans la semaine, attestation fournie pour votre assurance.</p>
+        <span class="mention">Assurance</span>
+      </article>
+      <article class="svc">
+        <span class="idx">V.</span>
+        <h3>Rideau métallique</h3>
+        <p>Déblocage, réparation et motorisation pour commerces. On rouvre votre boutique rapidement.</p>
+        <span class="mention">Commerces</span>
+      </article>
+      <article class="svc">
+        <span class="idx">VI.</span>
+        <h3>Reproduction de clés</h3>
+        <p>Clés plates, sécurisées et brevetées. Badges d'immeuble sur commande.</p>
+        <span class="mention">Atelier</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======== URGENCE ======== -->
+<section id="urgence">
+  <div class="wrap">
+    <div class="urgence-grid">
+      <div>
+        <p class="eyebrow reveal">Urgence</p>
+        <h2 class="title reveal">Bloqué dehors&nbsp;?<br>On décroche <span class="metal">toujours</span>.</h2>
+        <p class="section-lede reveal">Nuit, dimanche, jour férié : un serrurier de garde part de votre arrondissement, partout à Lyon. Voici exactement ce qui se passe :</p>
+        <ol class="steps reveal">
+          <li><div><b>Vous appelez, on annonce le prix</b><span>Au téléphone, avant tout déplacement. Il ne changera pas.</span></div></li>
+          <li><div><b>On arrive — 30 minutes en moyenne</b><span>Le serrurier vous prévient quand il part et quand il approche.</span></div></li>
+          <li><div><b>Porte ouverte, facture conforme</b><span>Ouverture propre, devis signé, pas un euro de plus.</span></div></li>
+        </ol>
+        <div class="urgence-cta reveal">
+          <a class="btn-steel big" href="tel:+33658428199">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Appeler maintenant
+          </a>
+          <p class="urgence-note">Majoration de nuit et jours fériés toujours annoncée à l'avance.</p>
+        </div>
+      </div>
+      <div class="badge-24 reveal" aria-hidden="true">
+        <svg viewBox="0 0 300 300">
+          <circle cx="150" cy="150" r="142"/>
+          <circle cx="150" cy="150" r="104"/>
+          <path id="ringPath" d="M150 26a124 124 0 1 1 0 248 124 124 0 1 1 0-248" fill="none"/>
+          <text><textPath href="#ringPath">DISPONIBLE 24H/24 · 7J/7 · INTERVENTION RAPIDE · PRIX ANNONCÉ ·&#160;</textPath></text>
+        </svg>
+        <div class="core metal">24/7<small>jour &amp; nuit</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== TARIFS ======== -->
+<section id="tarifs">
+  <div class="wrap">
+    <p class="eyebrow reveal">Tarifs</p>
+    <h2 class="title reveal">Des prix gravés <span class="metal">noir sur blanc</span>.</h2>
+    <p class="section-lede reveal">Le tarif est confirmé au téléphone puis sur devis signé — avant que l'on touche à votre porte.</p>
+    <div class="tarif-table reveal">
+      <div class="tarif-row">
+        <h3>Porte claquée</h3>
+        <p>Ouverture sans dégât, déplacement inclus en journée.</p>
+        <span class="prix">dès 89&nbsp;€ <small>TTC</small></span>
+      </div>
+      <div class="tarif-row">
+        <h3>Porte verrouillée / clé perdue</h3>
+        <p>Ouverture, cylindre standard remplacé, trois clés neuves fournies.</p>
+        <span class="prix">dès 129&nbsp;€ <small>TTC</small></span>
+      </div>
+      <div class="tarif-row">
+        <h3>Serrure multipoints</h3>
+        <p>Fourniture et pose, garantie pièces et main-d'œuvre 2 ans.</p>
+        <span class="prix">dès 240&nbsp;€ <small>TTC</small></span>
+      </div>
+      <div class="tarif-row">
+        <h3>Blindage &amp; haute sécurité</h3>
+        <p>Étude gratuite à domicile, matériel certifié A2P.</p>
+        <span class="prix">sur devis <small>GRATUIT</small></span>
+      </div>
+    </div>
+    <p class="tarif-note reveal">Nuits (22h–7h), dimanches et jours fériés : majoration annoncée au téléphone avant le déplacement. Devis signé obligatoire avant toute intervention, conformément à la réglementation.</p>
+  </div>
+</section>
+
+<!-- ======== AVIS ======== -->
+<section id="avis">
+  <div class="wrap">
+    <figure class="quote reveal">
+      <span class="guillemet metal" aria-hidden="true">«</span>
+      <blockquote id="quoteText">Porte claquée un dimanche à 23h. Arrivé en 25 minutes, ouverte sans une trace, au prix exact annoncé au téléphone.</blockquote>
+      <figcaption id="quoteAuthor"><b>Sophie M.</b> — Ouverture de porte, dimanche soir</figcaption>
+      <div class="quote-nav">
+        <button type="button" id="prevQuote" aria-label="Avis précédent">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <span class="quote-count" id="quoteCount" aria-live="polite">1 / 3</span>
+        <button type="button" id="nextQuote" aria-label="Avis suivant">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- ======== CONTACT ======== -->
+<section id="contact">
+  <div class="wrap">
+    <p class="eyebrow reveal">Contact</p>
+    <h2 class="title reveal">Écrivez-nous, ou mieux&nbsp;: <span class="metal">appelez</span>.</h2>
+    <p class="section-lede reveal">Réponse sous une heure en journée. Pour une urgence, le téléphone reste le plus rapide.</p>
+    <div class="contact-grid">
+      <ul class="coord reveal">
+        <li><span class="label">Téléphone — 24h/24</span><a href="tel:+33658428199">06 58 42 81 99</a></li>
+        <li><span class="label">E-mail</span><a href="mailto:moche.marchand@gmail.com">moche.marchand@gmail.com</a></li>
+        <li><span class="label">Zone d'intervention</span><span>Lyon &amp; toute la métropole</span></li>
+        <li><span class="label">Atelier</span><span>Lundi–samedi, 9h–19h</span></li>
+      </ul>
+      <form id="devisForm" novalidate class="reveal">
+        <div class="form-2col">
+          <div class="field">
+            <label for="f-nom">Nom <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-nom" name="nom" type="text" required autocomplete="name" placeholder="Votre nom">
+            <span class="err" role="alert">Indiquez votre nom pour que nous puissions vous répondre.</span>
+          </div>
+          <div class="field">
+            <label for="f-tel">Téléphone <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-tel" name="tel" type="tel" required autocomplete="tel" inputmode="tel" placeholder="06 …">
+            <span class="err" role="alert">Un numéro est nécessaire pour vous rappeler.</span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-service">Type de besoin</label>
+          <select id="f-service" name="service">
+            <option>Ouverture de porte</option>
+            <option>Remplacement de serrure</option>
+            <option>Blindage / haute sécurité</option>
+            <option>Rideau métallique</option>
+            <option>Reproduction de clés</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-msg">Votre message <span class="req" aria-hidden="true">*</span></label>
+          <textarea id="f-msg" name="message" required placeholder="Décrivez la situation : type de porte, étage, degré d'urgence…"></textarea>
+          <span class="err" role="alert">Décrivez brièvement votre besoin pour un devis précis.</span>
+        </div>
+        <div>
+          <button class="btn-steel big" type="submit" id="submitBtn">Envoyer ma demande</button>
+        </div>
+        <p class="form-status" id="formStatus" role="status">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 3 3 5-6"/></svg>
+          Demande envoyée — nous vous rappelons sous une heure en journée.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="foot-inner">
+    <span>© 2026 RhoneSerrurie — Serrurier à Lyon · SIRET 000 000 000 00000</span>
+    <span>Devis gratuit · Assurance décennale · Matériel certifié A2P</span>
+  </div>
+</footer>
+
+<a class="float-call" href="tel:+33658428199" aria-label="Appeler le serrurier en urgence">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Urgence
+</a>
+
+<script>
+// Révélation douce au scroll
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: .12 });
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = Math.min(i % 3 * 90, 200) + 'ms';
+  io.observe(el);
+});
+
+// Avis — rotation manuelle
+const avis = [
+  { t: "Porte claquée un dimanche à 23h. Arrivé en 25 minutes, ouverte sans une trace, au prix exact annoncé au téléphone.", a: "Sophie M.", d: "Ouverture de porte, dimanche soir" },
+  { t: "Après un cambriolage, la porte a été sécurisée le soir même et blindée la semaine suivante. Attestation assurance fournie sans qu'on la demande.", a: "Karim B.", d: "Blindage après effraction" },
+  { t: "Rideau métallique bloqué à l'ouverture de la boutique. Dépanné dans l'heure, moteur remplacé deux jours après. Sérieux rare.", a: "Laurent T.", d: "Rideau métallique, commerce" }
+];
+let qi = 0;
+const qText = document.getElementById('quoteText'),
+      qAuthor = document.getElementById('quoteAuthor'),
+      qCount = document.getElementById('quoteCount');
+function showQuote(n) {
+  qi = (n + avis.length) % avis.length;
+  qText.textContent = avis[qi].t;
+  qAuthor.textContent = '';
+  const b = document.createElement('b');
+  b.textContent = avis[qi].a;
+  qAuthor.append(b, ' — ' + avis[qi].d);
+  qCount.textContent = (qi + 1) + ' / ' + avis.length;
+}
+document.getElementById('prevQuote').addEventListener('click', () => showQuote(qi - 1));
+document.getElementById('nextQuote').addEventListener('click', () => showQuote(qi + 1));
+
+// Formulaire — validation au blur + état d'envoi
+const form = document.getElementById('devisForm');
+const status = document.getElementById('formStatus');
+const btn = document.getElementById('submitBtn');
+form.querySelectorAll('[required]').forEach(inp => {
+  inp.addEventListener('blur', () => {
+    inp.closest('.field').classList.toggle('invalid', !inp.value.trim());
+  });
+});
+form.addEventListener('submit', ev => {
+  ev.preventDefault();
+  let ok = true;
+  form.querySelectorAll('[required]').forEach(inp => {
+    const bad = !inp.value.trim();
+    inp.closest('.field').classList.toggle('invalid', bad);
+    if (bad) ok = false;
+  });
+  if (!ok) { form.querySelector('.invalid input, .invalid textarea')?.focus(); return; }
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours…';
+  fetch('https://formsubmit.co/ajax/moche.marchand@gmail.com', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      _subject: 'Nouvelle demande de devis — RhoneSerrurie',
+      _template: 'table',
+      _captcha: 'false',
+      Nom: document.getElementById('f-nom').value,
+      Téléphone: document.getElementById('f-tel').value,
+      Besoin: document.getElementById('f-service').value,
+      Message: document.getElementById('f-msg').value
+    })
+  })
+  .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+  .then(() => {
+    status.classList.add('show');
+    btn.textContent = 'Demande envoyée';
+    form.querySelectorAll('input, textarea').forEach(i => i.value = '');
+  })
+  .catch(() => {
+    btn.disabled = false;
+    btn.textContent = 'Réessayer l’envoi';
+    status.classList.add('show');
+    status.style.color = 'var(--error)';
+    status.lastChild.textContent = ' L’envoi a échoué — réessayez ou appelez le 06 58 42 81 99.';
+  });
+});
+</script>
+</body>
+</html>
