@@ -76,7 +76,7 @@ a,button{touch-action:manipulation}
   --panel:#2C2A28;
   --line:#3E3B38;
   --metal-1:#8FA9D6; --metal-2:#EAF1FB; --metal-3:#B6C9E6; --metal-4:#FFFFFF; --metal-5:#93ABD8;
-  position:sticky;top:0;z-index:100;
+  position:sticky;top:0;z-index:1200;
   background:rgba(27,26,25,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   border-bottom:1px solid #3E3B38;
 }
@@ -288,7 +288,7 @@ h2.title{
 .zone-layout{display:grid;gap:clamp(28px,4vw,48px);align-items:start}
 @media(min-width:960px){.zone-layout{grid-template-columns:1fr 1fr}}
 .zone-map{
-  position:relative;border-radius:16px;overflow:hidden;
+  position:relative;z-index:0;isolation:isolate;border-radius:16px;overflow:hidden;
   border:1px solid var(--line-strong);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 30px 60px rgba(0,0,0,.45);
   aspect-ratio:4/5;min-height:420px;
@@ -740,7 +740,7 @@ footer.site{border-top:1px solid var(--line);padding:34px 0;background:var(--bg-
 
 <footer class="site">
   <div class="foot-inner">
-    <span>© 2026 S.A.D Services à Domicile — Serrurier à Lyon · SIRET 000 000 000 00000</span>
+    <span>© 2026 S.A.D Services à Domicile — Serrurier à Lyon</span>
     <span>Devis gratuit · Assurance décennale · Matériel certifié A2P</span>
     <span><a href="mentions-legales.html" style="color:inherit">Mentions légales</a> · <a href="confidentialite.html" style="color:inherit">Politique de confidentialité</a></span>
   </div>
