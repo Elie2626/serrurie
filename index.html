@@ -13,23 +13,26 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
 :root{
-  /* palette tirée de la photo : porte graphite, métal brossé, lumière chaude */
-  --bg:#232120;
-  --bg-deep:#1B1A19;
-  --panel:#2C2A28;
-  --panel-2:#343230;
-  --line:#3E3B38;
-  --line-strong:#4C4844;
-  --steel:#C9C8CC;
-  --steel-soft:#9C9BA0;
-  --steel-deep:#77767B;
-  --warm:#CBB89D;           /* halo lumineux chaud de la photo */
-  --text:#ECEAE6;
-  --muted:#A39F98;
-  --success:#7FB78F;
-  --error:#D08770;
+  /* palette bleu · blanc · rouge — fond clair, accents tricolores */
+  --bg:#F7F8FA;
+  --bg-deep:#EDF1F7;
+  --panel:#FFFFFF;
+  --panel-2:#F1F4F9;
+  --line:#DCE2EB;
+  --line-strong:#B9C4D4;
+  --steel:#173562;          /* bleu marine — accent principal */
+  --steel-soft:#2C4F86;
+  --steel-deep:#3E67A8;
+  --rouge:#C8102E;          /* rouge — urgence / alerte */
+  --rouge-deep:#9C0C24;
+  --warm:#C8102E;
+  --text:#101828;
+  --muted:#5C6470;
+  --success:#1E7B4D;
+  --error:#C8102E;
   --font-display:'Marcellus',Georgia,serif;
   --font-body:'Manrope',sans-serif;
+  --metal-1:#0D2646; --metal-2:#3E6BB0; --metal-3:#173562; --metal-4:#5A87C9; --metal-5:#0A1D38;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -40,23 +43,24 @@ html{scroll-behavior:smooth}
 body{
   font-family:var(--font-body);
   background:
-    radial-gradient(1200px 700px at 22% 0%,rgba(203,184,157,.07),transparent 55%),
-    linear-gradient(160deg,#262422,#1E1D1B 60%,#232120);
+    radial-gradient(1200px 700px at 22% 0%,rgba(23,53,98,.05),transparent 55%),
+    radial-gradient(900px 600px at 100% 10%,rgba(200,16,46,.04),transparent 60%),
+    linear-gradient(160deg,#FBFCFD,#F3F5F8 60%,#F7F8FA);
   background-attachment:fixed;
   color:var(--text);
   font-size:16.5px;line-height:1.7;
   overflow-x:hidden;-webkit-font-smoothing:antialiased;
 }
-::selection{background:var(--steel);color:#1B1A19}
+::selection{background:var(--steel);color:#FFFFFF}
 a,button{touch-action:manipulation}
 :focus-visible{outline:2.5px solid var(--steel);outline-offset:3px;border-radius:4px}
-.skip-link{position:absolute;left:-999px;top:0;background:var(--steel);color:#1B1A19;padding:12px 20px;z-index:300;font-weight:700}
+.skip-link{position:absolute;left:-999px;top:0;background:var(--steel);color:#FFFFFF;padding:12px 20px;z-index:300;font-weight:700}
 .skip-link:focus{left:0}
 .wrap{max-width:1140px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
 
-/* texte métal brossé */
+/* texte métal — bleu brossé */
 .metal{
-  background:linear-gradient(100deg,#8E8D92 0%,#E8E7EB 30%,#B9B8BD 50%,#F2F1F4 66%,#94939A 100%);
+  background:linear-gradient(100deg,var(--metal-1) 0%,var(--metal-2) 30%,var(--metal-3) 50%,var(--metal-4) 66%,var(--metal-5) 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .eyebrow{
@@ -67,9 +71,14 @@ a,button{touch-action:manipulation}
 
 /* ---------- NAV ---------- */
 .nav{
+  --text:#ECEAE6;
+  --muted:#A39F98;
+  --panel:#2C2A28;
+  --line:#3E3B38;
+  --metal-1:#8FA9D6; --metal-2:#EAF1FB; --metal-3:#B6C9E6; --metal-4:#FFFFFF; --metal-5:#93ABD8;
   position:sticky;top:0;z-index:100;
-  background:rgba(27,26,25,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--line);
+  background:rgba(27,26,25,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid #3E3B38;
 }
 .nav-inner{
   max-width:1140px;margin:0 auto;padding:0 clamp(20px,5vw,48px);
@@ -87,20 +96,33 @@ a,button{touch-action:manipulation}
 .nav-links a:hover{color:var(--text);background:var(--panel)}
 .btn-steel{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;
-  font-weight:800;font-size:.95rem;color:#1B1A19;
-  background:linear-gradient(160deg,#E6E5E9 0%,#B9B8BD 45%,#D8D7DB 55%,#96959B 100%);
+  font-weight:800;font-size:.95rem;color:#FFFFFF;
+  background:linear-gradient(160deg,#2C4F86 0%,#173562 45%,#3E67A8 55%,#0D2646 100%);
   padding:13px 24px;min-height:46px;border-radius:10px;border:none;cursor:pointer;
   white-space:nowrap;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 1px 0 rgba(0,0,0,.5),0 10px 26px rgba(0,0,0,.35);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 1px 0 rgba(16,24,40,.1),0 10px 26px rgba(23,53,98,.28);
   transition:filter .2s,transform .12s,box-shadow .2s;
 }
-.btn-steel:hover{filter:brightness(1.08)}
+.btn-steel:hover{filter:brightness(1.1)}
 .btn-steel:active{transform:translateY(1px)}
 .btn-steel svg{width:17px;height:17px;flex:none}
+.btn-red{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;
+  font-weight:800;font-size:.95rem;color:#FFFFFF;
+  background:linear-gradient(160deg,#DE2A45 0%,#C8102E 45%,#E8455D 55%,#9C0C24 100%);
+  padding:13px 24px;min-height:46px;border-radius:10px;border:none;cursor:pointer;
+  white-space:nowrap;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 1px 0 rgba(16,24,40,.1),0 10px 26px rgba(200,16,46,.3);
+  transition:filter .2s,transform .12s,box-shadow .2s;
+}
+.btn-red:hover{filter:brightness(1.1)}
+.btn-red:active{transform:translateY(1px)}
+.btn-red svg{width:17px;height:17px;flex:none}
+.btn-red.big{font-size:1.02rem;padding:17px 32px;min-height:54px;border-radius:12px}
 .btn-line{
   display:inline-flex;align-items:center;gap:10px;text-decoration:none;min-height:48px;
   color:var(--text);font-weight:600;font-size:.95rem;padding:14px 24px;border-radius:10px;
-  border:1px solid var(--line-strong);background:rgba(44,42,40,.5);
+  border:1px solid var(--line-strong);background:rgba(255,255,255,.6);
   transition:border-color .2s,background .2s,transform .12s;
 }
 .btn-line:hover{border-color:var(--steel-soft);background:var(--panel)}
@@ -116,6 +138,12 @@ a,button{touch-action:manipulation}
 
 /* ---------- HERO ---------- */
 .hero{
+  --text:#ECEAE6;
+  --muted:#A39F98;
+  --line:#3E3B38;
+  --line-strong:#4C4844;
+  --steel-soft:#9C9BA0;
+  --metal-1:#8E8D92; --metal-2:#E8E7EB; --metal-3:#B9B8BD; --metal-4:#F2F1F4; --metal-5:#94939A;
   padding:clamp(64px,9vw,120px) 0 clamp(56px,8vw,96px);
   position:relative;overflow:hidden;
   min-height:min(92vh,780px);display:flex;align-items:center;
@@ -146,7 +174,7 @@ a,button{touch-action:manipulation}
 .hero h1{
   font-family:var(--font-display);font-weight:400;
   font-size:clamp(2.6rem,5.2vw,5.2rem);line-height:1.06;letter-spacing:.005em;
-  margin:26px 0 22px;
+  margin:26px 0 22px;color:#FFFFFF;
   text-shadow:0 4px 24px rgba(0,0,0,.4);
 }
 .hero .lede{color:var(--muted);max-width:52ch;font-size:clamp(1rem,1.5vw,1.1rem);margin-bottom:36px}
@@ -202,7 +230,7 @@ h2.title{
 
 /* ---------- URGENCE ---------- */
 #urgence{
-  background:linear-gradient(160deg,#1D1C1A,#161514);
+  background:linear-gradient(160deg,#FCEEF0,#FBE4E8);
   border-block:1px solid var(--line);
 }
 .urgence-grid{display:grid;gap:clamp(40px,6vw,80px)}
@@ -279,8 +307,8 @@ h2.title{
 .zone-map .map-tag{
   position:absolute;left:14px;top:14px;z-index:2;
   font-size:.7rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
-  color:#1B1A19;background:linear-gradient(160deg,#E6E5E9,#B9B8BD);
-  padding:8px 15px;border-radius:999px;box-shadow:0 8px 20px rgba(0,0,0,.4);
+  color:#FFFFFF;background:linear-gradient(160deg,#2C4F86,#0D2646);
+  padding:8px 15px;border-radius:999px;box-shadow:0 8px 20px rgba(16,24,40,.35);
 }
 details.zone-group{
   border:1px solid var(--line);border-radius:12px;background:var(--panel);
@@ -310,7 +338,7 @@ details.zone-group[open] summary{border-bottom:1px solid var(--line)}
 .zone-note{color:var(--muted);font-size:.9rem;margin-top:18px}
 
 /* ---------- AVIS ---------- */
-#avis{background:linear-gradient(160deg,#1D1C1A,#181716);border-block:1px solid var(--line)}
+#avis{background:linear-gradient(160deg,#EEF3FA,#E6EDF8);border-block:1px solid var(--line)}
 .quote{max-width:840px;margin:0 auto;text-align:center}
 .quote .guillemet{font-family:var(--font-display);font-size:4.4rem;line-height:0;display:block;margin-bottom:38px}
 .quote blockquote{
@@ -347,7 +375,7 @@ form{
 @media(min-width:640px){.form-2col{grid-template-columns:1fr 1fr}}
 .field{display:grid;gap:8px}
 .field label{font-size:.74rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.field label .req{color:var(--steel)}
+.field label .req{color:var(--rouge)}
 .field input,.field select,.field textarea{
   font:inherit;color:var(--text);background:var(--bg-deep);width:100%;
   border:1px solid var(--line);border-radius:10px;
@@ -376,14 +404,14 @@ footer.site{border-top:1px solid var(--line);padding:34px 0;background:var(--bg-
 .float-call{
   position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:90;
   display:grid;place-items:center;text-decoration:none;
-  width:56px;height:56px;border-radius:50%;color:#1B1A19;
-  background:linear-gradient(160deg,#E6E5E9,#A9A8AE);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 12px 30px rgba(0,0,0,.5);
+  width:56px;height:56px;border-radius:50%;color:#FFFFFF;
+  background:linear-gradient(160deg,#DE2A45,#9C0C24);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 12px 30px rgba(200,16,46,.45);
   transition:transform .12s,filter .2s;
 }
 .float-call::after{ /* halo pulsé */
   content:"";position:absolute;inset:-4px;border-radius:50%;
-  border:2px solid rgba(201,200,204,.55);
+  border:2px solid rgba(200,16,46,.4);
   animation:callPulse 2.2s ease-out infinite;pointer-events:none;
 }
 @keyframes callPulse{
@@ -405,7 +433,7 @@ footer.site{border-top:1px solid var(--line);padding:34px 0;background:var(--bg-
       <svg class="brand-key" viewBox="0 0 40 40" fill="none" aria-hidden="true">
         <defs>
           <linearGradient id="mkey" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#E6E5E9"/><stop offset=".5" stop-color="#A9A8AE"/><stop offset="1" stop-color="#8B8A90"/>
+            <stop offset="0" stop-color="#3E67A8"/><stop offset=".5" stop-color="#173562"/><stop offset="1" stop-color="#0D2646"/>
           </linearGradient>
         </defs>
         <circle cx="13" cy="14" r="8" stroke="url(#mkey)" stroke-width="3"/>
@@ -539,7 +567,7 @@ footer.site{border-top:1px solid var(--line);padding:34px 0;background:var(--bg-
           <li><div><b>Porte ouverte, facture conforme</b><span>Ouverture propre, devis signé, pas un euro de plus.</span></div></li>
         </ol>
         <div class="urgence-cta reveal">
-          <a class="btn-steel big" href="tel:+33635416525">
+          <a class="btn-red big" href="tel:+33635416525">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             Urgence : 06 35 41 65 25
           </a>
@@ -604,7 +632,7 @@ footer.site{border-top:1px solid var(--line);padding:34px 0;background:var(--bg-
         <div id="zoneMap" role="img" aria-label="Carte de la zone d'intervention : Lyon, Villefranche-sur-Saône, Vienne, Saint-Étienne et Grenoble"></div>
       </div>
       <div class="zone-list">
-    <details class="zone-group reveal" open>
+    <details class="zone-group reveal">
       <summary>Lyon &amp; métropole<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
       <ul class="zone-tags">
         <li>Lyon 1er</li><li>Lyon 2e</li><li>Lyon 3e</li><li>Lyon 4e</li><li>Lyon 5e</li><li>Lyon 6e</li><li>Lyon 7e</li><li>Lyon 8e</li><li>Lyon 9e</li>
