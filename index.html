@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>S.A.D Services à Domicile — Serrurier à Lyon — Dépannage 24h/24 · Ouverture de porte, serrures, blindage</title>
 <meta name="description" content="S.A.D Services à Domicile : serrurier à Lyon, Grenoble, Saint-Étienne, Villefranche-sur-Saône, Vienne et toutes les communes alentour. Ouverture de porte sans dégât, serrure, blindage, rabotage de porte, serrure connectée. Urgence 24h/24.">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="favicon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -85,7 +85,7 @@ a,button{touch-action:manipulation}
   display:flex;align-items:center;justify-content:space-between;min-height:74px;gap:16px;
 }
 .brand{display:flex;align-items:center;gap:13px;text-decoration:none;color:var(--text);min-height:44px}
-.brand-key{width:36px;height:36px;flex:none}
+.brand-key{width:40px;height:40px;flex:none;border-radius:9px;object-fit:cover}
 .brand b{font-family:var(--font-display);font-weight:400;font-size:1.18rem;letter-spacing:.09em;text-transform:uppercase}
 .nav-links{display:none;gap:4px;list-style:none}
 @media(min-width:940px){.nav-links{display:flex}}
@@ -425,15 +425,7 @@ footer.site{border-top:1px solid var(--line);padding:34px 0;background:var(--bg-
 <nav class="nav" aria-label="Navigation principale">
   <div class="nav-inner">
     <a class="brand" href="#top" aria-label="S.A.D Services à Domicile — retour en haut">
-      <svg class="brand-key" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-        <defs>
-          <linearGradient id="mkey" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#3E67A8"/><stop offset=".5" stop-color="#173562"/><stop offset="1" stop-color="#0D2646"/>
-          </linearGradient>
-        </defs>
-        <circle cx="13" cy="14" r="8" stroke="url(#mkey)" stroke-width="3"/>
-        <path d="M18.5 19.5 32 33M27 28l4-4M30.5 31.5l3.5-3.5" stroke="url(#mkey)" stroke-width="3" stroke-linecap="round"/>
-      </svg>
+      <img class="brand-key" src="logo-nav.png" width="40" height="40" alt="">
       <b class="metal">S.A.D<span class="brand-long"> Services à Domicile</span></b>
     </a>
     <ul class="nav-links">
