@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RhoneSerrurie — Serrurier à Lyon — Dépannage 24h/24 · Ouverture de porte, serrures, blindage</title>
-<meta name="description" content="Serrurier à Lyon et sa métropole. Ouverture de porte sans dégât, remplacement de serrure, blindage. Urgence 24h/24, prix annoncé avant intervention.">
+<title>S.A.D Services à Domicile — Serrurier à Lyon — Dépannage 24h/24 · Ouverture de porte, serrures, blindage</title>
+<meta name="description" content="S.A.D Services à Domicile : serrurier à Lyon, Grenoble, Saint-Étienne, Villefranche-sur-Saône, Vienne et toutes les communes alentour. Ouverture de porte sans dégât, serrure, blindage, rabotage de porte, serrure connectée. Urgence 24h/24.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -105,6 +105,8 @@ a,button{touch-action:manipulation}
 .btn-line:hover{border-color:var(--steel-soft);background:var(--panel)}
 .btn-line:active{transform:scale(.98)}
 .btn-line svg{width:15px;height:15px}
+.brand b{white-space:nowrap}
+@media(max-width:640px){.brand-long{display:none}}
 @media(max-width:480px){
   .nav-inner .btn-steel{padding:11px 14px;font-size:.85rem;gap:7px}
   .brand b{font-size:1rem}
@@ -252,6 +254,23 @@ h2.title{
   background:var(--panel);color:var(--muted);font-size:.9rem;max-width:78ch;border-radius:0 8px 8px 0;
 }
 
+/* ---------- ZONES ---------- */
+#zones{border-top:1px solid var(--line)}
+.zone-group{margin-bottom:34px}
+.zone-group h3{
+  font-family:var(--font-display);font-weight:400;font-size:1.15rem;letter-spacing:.02em;
+  margin-bottom:14px;display:flex;align-items:center;gap:12px;
+}
+.zone-group h3::after{content:"";flex:1;height:1px;background:var(--line)}
+.zone-tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none}
+.zone-tags li{
+  font-size:.83rem;font-weight:600;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:7px 15px;
+  transition:color .2s,border-color .2s;
+}
+.zone-tags li:hover{color:var(--text);border-color:var(--steel-soft)}
+.zone-note{color:var(--muted);font-size:.9rem;margin-top:8px}
+
 /* ---------- AVIS ---------- */
 #avis{background:linear-gradient(160deg,#1D1C1A,#181716);border-block:1px solid var(--line)}
 .quote{max-width:840px;margin:0 auto;text-align:center}
@@ -334,7 +353,7 @@ footer.site{border-top:1px solid var(--line);padding:34px 0;background:var(--bg-
 
 <nav class="nav" aria-label="Navigation principale">
   <div class="nav-inner">
-    <a class="brand" href="#top" aria-label="RhoneSerrurie — retour en haut">
+    <a class="brand" href="#top" aria-label="S.A.D Services à Domicile — retour en haut">
       <svg class="brand-key" viewBox="0 0 40 40" fill="none" aria-hidden="true">
         <defs>
           <linearGradient id="mkey" x1="0" y1="0" x2="1" y2="1">
@@ -344,18 +363,19 @@ footer.site{border-top:1px solid var(--line);padding:34px 0;background:var(--bg-
         <circle cx="13" cy="14" r="8" stroke="url(#mkey)" stroke-width="3"/>
         <path d="M18.5 19.5 32 33M27 28l4-4M30.5 31.5l3.5-3.5" stroke="url(#mkey)" stroke-width="3" stroke-linecap="round"/>
       </svg>
-      <b class="metal">RhoneSerrurie</b>
+      <b class="metal">S.A.D<span class="brand-long"> Services à Domicile</span></b>
     </a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#urgence">Urgence</a></li>
       <li><a href="#tarifs">Tarifs</a></li>
+      <li><a href="#zones">Zones</a></li>
       <li><a href="#avis">Avis</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a class="btn-steel" href="tel:+33658428199">
+    <a class="btn-steel" href="tel:+33472402402">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      06 58 42 81 99
+      04 72 40 24 02
     </a>
   </div>
 </nav>
@@ -370,9 +390,9 @@ footer.site{border-top:1px solid var(--line);padding:34px 0;background:var(--bg-
         <h1>Votre serrurier<br>à <span class="metal">Lyon</span>,<br>sans dégât.</h1>
         <p class="lede">Ouverture de porte, remplacement de serrure, blindage — dans tous les arrondissements de Lyon et sa métropole (Villeurbanne, Caluire, Bron…). Le prix est annoncé au téléphone avant le déplacement — et c'est celui de la facture.</p>
         <div class="hero-ctas">
-          <a class="btn-steel big" href="tel:+33658428199">
+          <a class="btn-steel big" href="tel:+33472402402">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            06 58 42 81 99
+            04 72 40 24 02
           </a>
           <a class="btn-line" href="#contact">Devis gratuit
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -435,6 +455,24 @@ footer.site{border-top:1px solid var(--line);padding:34px 0;background:var(--bg-
         <p>Clés plates, sécurisées et brevetées. Badges d'immeuble sur commande.</p>
         <span class="mention">Atelier</span>
       </article>
+      <article class="svc">
+        <span class="idx">VII.</span>
+        <h3>Rabotage de porte &amp; barre de pivot</h3>
+        <p>Porte qui frotte, qui ferme mal ou s'affaisse : rabotage précis, réglage ou remplacement de la barre de pivot pour retrouver une fermeture parfaite.</p>
+        <span class="mention">Menuiserie</span>
+      </article>
+      <article class="svc">
+        <span class="idx">VIII.</span>
+        <h3>Serrure domotique &amp; électronique</h3>
+        <p>Serrures connectées, à code, à badge ou à empreinte : pose et configuration. Ouvrez et contrôlez votre porte depuis votre smartphone.</p>
+        <span class="mention">Connecté</span>
+      </article>
+      <article class="svc">
+        <span class="idx">IX.</span>
+        <h3>Judas connecté</h3>
+        <p>Visualisez qui sonne à votre porte, même en votre absence, directement sur votre téléphone. Installation propre et rapide.</p>
+        <span class="mention">Sécurité</span>
+      </article>
     </div>
   </div>
 </section>
@@ -453,9 +491,9 @@ footer.site{border-top:1px solid var(--line);padding:34px 0;background:var(--bg-
           <li><div><b>Porte ouverte, facture conforme</b><span>Ouverture propre, devis signé, pas un euro de plus.</span></div></li>
         </ol>
         <div class="urgence-cta reveal">
-          <a class="btn-steel big" href="tel:+33658428199">
+          <a class="btn-steel big" href="tel:+33635416525">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Appeler maintenant
+            Urgence : 06 35 41 65 25
           </a>
           <p class="urgence-note">Majoration de nuit et jours fériés toujours annoncée à l'avance.</p>
         </div>
@@ -505,6 +543,53 @@ footer.site{border-top:1px solid var(--line);padding:34px 0;background:var(--bg-
   </div>
 </section>
 
+<!-- ======== ZONES D'INTERVENTION ======== -->
+<section id="zones">
+  <div class="wrap">
+    <p class="eyebrow reveal">Zones d'intervention</p>
+    <h2 class="title reveal">Nous quadrillons tout l'axe <span class="metal">Lyon — Grenoble — Saint-Étienne</span>.</h2>
+    <p class="section-lede reveal">Serrurier à domicile de Villefranche-sur-Saône à Grenoble, en passant par Lyon, Vienne et Saint-Étienne — ainsi que dans toutes les communes situées entre ces villes.</p>
+
+    <div class="zone-group reveal">
+      <h3>Lyon &amp; métropole</h3>
+      <ul class="zone-tags">
+        <li>Lyon 1er</li><li>Lyon 2e</li><li>Lyon 3e</li><li>Lyon 4e</li><li>Lyon 5e</li><li>Lyon 6e</li><li>Lyon 7e</li><li>Lyon 8e</li><li>Lyon 9e</li>
+        <li>Villeurbanne</li><li>Vénissieux</li><li>Vaulx-en-Velin</li><li>Bron</li><li>Caluire-et-Cuire</li><li>Saint-Priest</li><li>Meyzieu</li><li>Décines-Charpieu</li><li>Rillieux-la-Pape</li><li>Oullins</li><li>Sainte-Foy-lès-Lyon</li><li>Tassin-la-Demi-Lune</li><li>Écully</li><li>Saint-Fons</li><li>Feyzin</li><li>Corbas</li><li>Mions</li><li>Chassieu</li><li>Genas</li><li>Irigny</li><li>Pierre-Bénite</li><li>Givors</li><li>Grigny</li><li>Neuville-sur-Saône</li><li>Genay</li><li>Limonest</li><li>Dardilly</li><li>Craponne</li><li>Francheville</li><li>Brignais</li><li>Chaponost</li><li>Saint-Genis-Laval</li>
+      </ul>
+    </div>
+
+    <div class="zone-group reveal">
+      <h3>Vers Villefranche-sur-Saône &amp; le Beaujolais</h3>
+      <ul class="zone-tags">
+        <li>Villefranche-sur-Saône</li><li>Anse</li><li>Gleizé</li><li>Arnas</li><li>Limas</li><li>Jassans-Riottier</li><li>Trévoux</li><li>Reyrieux</li><li>Belleville-en-Beaujolais</li><li>Saint-Georges-de-Reneins</li><li>Villié-Morgon</li><li>Chazay-d'Azergues</li><li>Lozanne</li><li>Civrieux-d'Azergues</li><li>Lissieu</li><li>Quincieux</li>
+      </ul>
+    </div>
+
+    <div class="zone-group reveal">
+      <h3>Vers Vienne &amp; la vallée du Rhône</h3>
+      <ul class="zone-tags">
+        <li>Vienne</li><li>Saint-Romain-en-Gal</li><li>Pont-Évêque</li><li>Chasse-sur-Rhône</li><li>Communay</li><li>Ternay</li><li>Sérézin-du-Rhône</li><li>Solaize</li><li>Chaponnay</li><li>Marennes</li><li>Saint-Symphorien-d'Ozon</li><li>Condrieu</li><li>Ampuis</li><li>Loire-sur-Rhône</li><li>Estrablin</li><li>Chuzelles</li><li>Villette-de-Vienne</li><li>Luzinay</li>
+      </ul>
+    </div>
+
+    <div class="zone-group reveal">
+      <h3>Vers Saint-Étienne &amp; la vallée du Gier</h3>
+      <ul class="zone-tags">
+        <li>Saint-Étienne</li><li>Saint-Chamond</li><li>Rive-de-Gier</li><li>La Grand-Croix</li><li>Lorette</li><li>Saint-Genis-Terrenoire</li><li>Mornant</li><li>Saint-Laurent-d'Agny</li><li>Soucieu-en-Jarrest</li><li>Firminy</li><li>La Ricamarie</li><li>Le Chambon-Feugerolles</li><li>Saint-Priest-en-Jarez</li><li>Villars</li><li>La Talaudière</li><li>Sorbiers</li><li>Saint-Héand</li><li>Andrézieux-Bouthéon</li>
+      </ul>
+    </div>
+
+    <div class="zone-group reveal">
+      <h3>Vers Grenoble &amp; le Nord-Isère</h3>
+      <ul class="zone-tags">
+        <li>Grenoble</li><li>Bourgoin-Jallieu</li><li>L'Isle-d'Abeau</li><li>Villefontaine</li><li>La Verpillière</li><li>Saint-Quentin-Fallavier</li><li>Heyrieux</li><li>Saint-Laurent-de-Mure</li><li>Saint-Bonnet-de-Mure</li><li>La Tour-du-Pin</li><li>Voiron</li><li>Moirans</li><li>Rives</li><li>Tullins</li><li>Voreppe</li><li>Saint-Égrève</li><li>Saint-Martin-le-Vinoux</li><li>Fontaine</li><li>Échirolles</li><li>Saint-Martin-d'Hères</li><li>Meylan</li><li>Sassenage</li>
+      </ul>
+    </div>
+
+    <p class="zone-note reveal">Votre commune n'apparaît pas ? Appelez-nous : nous intervenons dans toutes les villes et villages situés entre Lyon, Villefranche-sur-Saône, Vienne, Saint-Étienne et Grenoble.</p>
+  </div>
+</section>
+
 <!-- ======== AVIS ======== -->
 <section id="avis">
   <div class="wrap">
@@ -533,9 +618,10 @@ footer.site{border-top:1px solid var(--line);padding:34px 0;background:var(--bg-
     <p class="section-lede reveal">Réponse sous une heure en journée. Pour une urgence, le téléphone reste le plus rapide.</p>
     <div class="contact-grid">
       <ul class="coord reveal">
-        <li><span class="label">Téléphone — 24h/24</span><a href="tel:+33658428199">06 58 42 81 99</a></li>
+        <li><span class="label">Téléphone</span><a href="tel:+33472402402">04 72 40 24 02</a></li>
+        <li><span class="label">Urgence — 24h/24</span><a href="tel:+33635416525">06 35 41 65 25</a></li>
         <li><span class="label">E-mail</span><a href="mailto:moche.marchand@gmail.com">moche.marchand@gmail.com</a></li>
-        <li><span class="label">Zone d'intervention</span><span>Lyon &amp; toute la métropole</span></li>
+        <li><span class="label">Zone d'intervention</span><span>Lyon · Villefranche · Vienne · Saint-Étienne · Grenoble</span></li>
         <li><span class="label">Atelier</span><span>Lundi–samedi, 9h–19h</span></li>
       </ul>
       <form id="devisForm" novalidate class="reveal">
@@ -582,13 +668,13 @@ footer.site{border-top:1px solid var(--line);padding:34px 0;background:var(--bg-
 
 <footer class="site">
   <div class="foot-inner">
-    <span>© 2026 RhoneSerrurie — Serrurier à Lyon · SIRET 000 000 000 00000</span>
+    <span>© 2026 S.A.D Services à Domicile — Serrurier à Lyon · SIRET 000 000 000 00000</span>
     <span>Devis gratuit · Assurance décennale · Matériel certifié A2P</span>
     <span><a href="mentions-legales.html" style="color:inherit">Mentions légales</a> · <a href="confidentialite.html" style="color:inherit">Politique de confidentialité</a></span>
   </div>
 </footer>
 
-<a class="float-call" href="tel:+33658428199" aria-label="Appeler le serrurier en urgence">
+<a class="float-call" href="tel:+33635416525" aria-label="Appeler le numéro d'urgence">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
   Urgence
 </a>
@@ -649,7 +735,7 @@ form.addEventListener('submit', ev => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify({
-      _subject: 'Nouvelle demande de devis — RhoneSerrurie',
+      _subject: 'Nouvelle demande de devis — S.A.D Services à Domicile',
       _template: 'table',
       _captcha: 'false',
       Nom: document.getElementById('f-nom').value,
@@ -669,7 +755,7 @@ form.addEventListener('submit', ev => {
     btn.textContent = 'Réessayer l’envoi';
     status.classList.add('show');
     status.style.color = 'var(--error)';
-    status.lastChild.textContent = ' L’envoi a échoué — réessayez ou appelez le 06 58 42 81 99.';
+    status.lastChild.textContent = ' L’envoi a échoué — réessayez ou appelez le 04 72 40 24 02.';
   });
 });
 </script>
