@@ -277,6 +277,15 @@ a,button{touch-action:manipulation}
 }
 .hero .lede{color:var(--muted);max-width:52ch;font-size:clamp(1rem,1.5vw,1.1rem);margin-bottom:36px}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.trust-chips{
+  list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;
+}
+.trust-chips li{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:.85rem;font-weight:600;color:#DDD8D0;
+  text-shadow:0 1px 8px rgba(0,0,0,.6);
+}
+.trust-chips svg{width:15px;height:15px;flex:none;color:#C9C8CC}
 .btn-steel.big{font-size:1.02rem;padding:17px 32px;min-height:54px;border-radius:12px}
 .hero-facts{
   display:flex;flex-wrap:wrap;gap:0;margin-top:clamp(40px,6vw,58px);
@@ -515,6 +524,18 @@ footer.site{border-top:1px solid var(--line);padding:34px 0;background:var(--bg-
 .float-call:hover{filter:brightness(1.08)}
 .float-call:active{transform:scale(.94)}
 .float-call svg{width:24px;height:24px}
+.float-call .fc-label{display:none}
+/* sur mobile : barre d'appel pleine largeur, impossible à rater */
+@media(max-width:640px){
+  .float-call{
+    left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));
+    width:auto;height:auto;min-height:58px;border-radius:16px;
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    font-weight:800;font-size:1.05rem;
+  }
+  .float-call .fc-label{display:inline}
+  body{padding-bottom:86px}
+}
 </style>
 </head>
 <body>
@@ -565,12 +586,18 @@ footer.site{border-top:1px solid var(--line);padding:34px 0;background:var(--bg-
         <div class="hero-ctas">
           <a class="btn-steel big" href="tel:+33472402402">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            04 72 40 24 02
+            Appeler — 04 72 40 24 02
           </a>
           <a class="btn-line" href="#contact">Devis gratuit
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
+        <ul class="trust-chips" aria-label="Nos garanties">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Devis gratuit</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Prix fixe annoncé avant le déplacement</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Garantie 2 ans</li>
+          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>4,9/5 — plus de 400 avis</li>
+        </ul>
         <div class="hero-facts" role="list">
           <div class="fact" role="listitem"><b>30 min</b><span>Arrivée moyenne</span></div>
           <div class="fact" role="listitem"><b>95 %</b><span>Ouvertures sans dégât</span></div>
@@ -858,6 +885,7 @@ footer.site{border-top:1px solid var(--line);padding:34px 0;background:var(--bg-
 
 <a class="float-call" href="tel:+33635416525" aria-label="Appel d'urgence : 06 35 41 65 25" title="Appel d'urgence 24h/24">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  <span class="fc-label">Urgence 24h/24 — Appeler</span>
 </a>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
