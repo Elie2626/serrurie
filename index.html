@@ -452,26 +452,77 @@ details.zone-group[open] summary{border-bottom:1px solid var(--line)}
 .zone-tags li:hover{color:var(--text);border-color:var(--steel-soft)}
 .zone-note{color:var(--muted);font-size:.9rem;margin-top:18px}
 
-/* ---------- AVIS ---------- */
+/* ---------- AVIS — slider de cartes ---------- */
 #avis{background:linear-gradient(160deg,#EEF3FA,#E6EDF8);border-block:1px solid var(--line)}
-.quote{max-width:840px;margin:0 auto;text-align:center}
-.quote .guillemet{font-family:var(--font-display);font-size:4.4rem;line-height:0;display:block;margin-bottom:38px}
-.quote blockquote{
+.tsl-head{text-align:center;margin-bottom:clamp(34px,5vw,56px)}
+.tsl-pill{
+  display:inline-block;padding:6px 16px;border-radius:999px;
+  background:rgba(23,53,98,.09);color:var(--steel);
+  font-size:.74rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;
+}
+.tsl-head h2{
   font-family:var(--font-display);font-weight:400;
-  font-size:clamp(1.3rem,3vw,1.9rem);line-height:1.45;
+  font-size:clamp(1.7rem,3.6vw,2.6rem);margin-top:16px;
 }
-.quote figcaption{margin-top:30px;font-size:.92rem;color:var(--muted)}
-.quote figcaption b{color:var(--text);font-weight:700}
-.quote-nav{display:flex;justify-content:center;gap:12px;margin-top:36px}
-.quote-nav button{
-  width:48px;height:48px;border-radius:50%;border:1px solid var(--line-strong);
-  background:transparent;color:var(--text);cursor:pointer;display:grid;place-items:center;
-  transition:background .2s,border-color .2s,transform .12s;
+.tsl-head .tsl-bar{width:72px;height:3px;border-radius:2px;margin:22px auto 0;
+  background:linear-gradient(90deg,var(--steel),var(--steel-deep))}
+.tsl{position:relative}
+.tsl-viewport{overflow:hidden}
+.tsl-track{display:flex;transition:transform .55s cubic-bezier(.22,.8,.3,1);touch-action:pan-y}
+.tsl-slide{flex:0 0 100%;padding:8px;box-sizing:border-box}
+@media(min-width:768px){.tsl-slide{flex-basis:50%}}
+@media(min-width:1180px){.tsl-slide{flex-basis:33.3333%}}
+.tsl-card{
+  position:relative;height:100%;display:flex;flex-direction:column;
+  background:var(--panel);border:1px solid var(--line);border-radius:16px;
+  padding:26px 24px 22px;overflow:hidden;
+  box-shadow:0 10px 30px rgba(23,53,98,.07);
+  transition:transform .25s ease-out,box-shadow .25s ease-out;
 }
-.quote-nav button:hover{background:var(--panel);border-color:var(--steel-soft)}
-.quote-nav button:active{transform:scale(.94)}
-.quote-nav svg{width:17px;height:17px}
-.quote-count{align-self:center;font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums;padding:0 8px}
+.tsl-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(23,53,98,.13)}
+.tsl-card .tsl-quote-ic{
+  position:absolute;top:-8px;left:-6px;width:74px;height:74px;
+  color:var(--steel);opacity:.08;pointer-events:none;
+}
+.tsl-stars{display:inline-flex;gap:3px;margin-bottom:14px}
+.tsl-stars svg{width:16px;height:16px;color:#E8A33D}
+.tsl-card p{
+  position:relative;font-size:.95rem;line-height:1.65;color:var(--text);
+  font-weight:500;margin-bottom:20px;
+}
+.tsl-foot{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);display:flex;align-items:center;gap:12px}
+.tsl-avatar{
+  flex:none;width:42px;height:42px;border-radius:50%;
+  display:grid;place-items:center;color:#fff;font-weight:800;font-size:.9rem;
+  background:linear-gradient(140deg,var(--steel-soft),var(--steel));
+  box-shadow:0 3px 10px rgba(23,53,98,.25);
+}
+.tsl-foot b{display:block;font-size:.95rem}
+.tsl-foot span{display:block;font-size:.8rem;color:var(--muted)}
+.tsl-arrows{display:flex;justify-content:center;gap:10px;margin-bottom:18px}
+@media(min-width:640px){
+  .tsl-arrows{position:absolute;top:-64px;right:0;margin-bottom:0}
+}
+.tsl-arrows button{
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--line-strong);
+  background:var(--panel);color:var(--steel);cursor:pointer;display:grid;place-items:center;
+  box-shadow:0 4px 12px rgba(23,53,98,.08);
+  transition:background .2s,transform .15s,opacity .2s;
+}
+.tsl-arrows button:hover:not(:disabled){transform:scale(1.08);background:var(--panel-2)}
+.tsl-arrows button:active:not(:disabled){transform:scale(.95)}
+.tsl-arrows button:disabled{opacity:.35;cursor:default}
+.tsl-arrows svg{width:19px;height:19px}
+.tsl-dots{display:flex;justify-content:center;gap:8px;margin-top:28px}
+.tsl-dots button{
+  width:22px;height:22px;border:none;background:none;cursor:pointer;
+  display:grid;place-items:center;padding:0;
+}
+.tsl-dots button i{
+  width:8px;height:8px;border-radius:50%;background:#B9C4D4;
+  transition:background .25s,transform .25s;
+}
+.tsl-dots button[aria-current="true"] i{background:var(--steel);transform:scale(1.35)}
 
 /* ---------- CONTACT ---------- */
 .contact-grid{display:grid;gap:clamp(40px,6vw,80px)}
@@ -810,20 +861,25 @@ footer.site{border-top:1px solid var(--line);padding:34px 0;background:var(--bg-
 <!-- ======== AVIS ======== -->
 <section id="avis">
   <div class="wrap">
-    <figure class="quote reveal">
-      <span class="guillemet metal" aria-hidden="true">«</span>
-      <blockquote id="quoteText">Porte claquée un dimanche à 23h. Arrivé en 25 minutes, ouverte sans une trace, au prix exact annoncé au téléphone.</blockquote>
-      <figcaption id="quoteAuthor"><b>Sophie M.</b> — Ouverture de porte, dimanche soir</figcaption>
-      <div class="quote-nav">
-        <button type="button" id="prevQuote" aria-label="Avis précédent">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    <div class="tsl-head reveal">
+      <span class="tsl-pill">Avis clients</span>
+      <h2>Ils nous ont fait <span class="metal">confiance</span></h2>
+      <div class="tsl-bar" aria-hidden="true"></div>
+    </div>
+    <div class="tsl reveal">
+      <div class="tsl-arrows">
+        <button type="button" id="tslPrev" aria-label="Avis précédents">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
         </button>
-        <span class="quote-count" id="quoteCount" aria-live="polite">1 / 3</span>
-        <button type="button" id="nextQuote" aria-label="Avis suivant">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <button type="button" id="tslNext" aria-label="Avis suivants">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
         </button>
       </div>
-    </figure>
+      <div class="tsl-viewport">
+        <div class="tsl-track" id="tslTrack"></div>
+      </div>
+      <div class="tsl-dots" id="tslDots" role="tablist" aria-label="Navigation des avis"></div>
+    </div>
   </div>
 </section>
 
@@ -971,27 +1027,125 @@ document.querySelectorAll('.reveal').forEach((el, i) => {
   io.observe(el);
 });
 
-// Avis — rotation manuelle
+// Avis — slider de cartes
 const avis = [
-  { t: "Porte claquée un dimanche à 23h. Arrivé en 25 minutes, ouverte sans une trace, au prix exact annoncé au téléphone.", a: "Sophie M.", d: "Ouverture de porte, dimanche soir" },
-  { t: "Après un cambriolage, la porte a été sécurisée le soir même et blindée la semaine suivante. Attestation assurance fournie sans qu'on la demande.", a: "Karim B.", d: "Blindage après effraction" },
-  { t: "Rideau métallique bloqué à l'ouverture de la boutique. Dépanné dans l'heure, moteur remplacé deux jours après. Sérieux rare.", a: "Laurent T.", d: "Rideau métallique, commerce" }
+  { t: "Porte claquée un dimanche à 23h. Arrivé en 25 minutes, ouverte sans une trace, au prix exact annoncé au téléphone.", a: "Sophie M.", d: "Ouverture de porte — Lyon 3e", s: 5 },
+  { t: "Après un cambriolage, la porte a été sécurisée le soir même et blindée la semaine suivante. Attestation assurance fournie sans qu'on la demande.", a: "Karim B.", d: "Blindage après effraction — Villeurbanne", s: 5 },
+  { t: "Rideau métallique bloqué à l'ouverture de la boutique. Dépanné dans l'heure, moteur remplacé deux jours après. Sérieux rare.", a: "Laurent T.", d: "Rideau métallique — Lyon 7e", s: 5 },
+  { t: "Clé cassée dans la serrure un soir de semaine. Intervention rapide, propre, et le tarif annoncé a été respecté à l'euro près.", a: "Nadia R.", d: "Extraction de clé — Vénissieux", s: 5 },
+  { t: "Changement de serrure après la perte de mes clés. Conseils honnêtes, pas de vente forcée, travail impeccable.", a: "Pierre D.", d: "Remplacement de serrure — Caluire", s: 5 },
+  { t: "Très professionnel, il m'a expliqué chaque étape avant d'intervenir. Je recommande les yeux fermés.", a: "Amélie F.", d: "Ouverture de porte — Lyon 6e", s: 5 },
+  { t: "Serrure connectée installée en une matinée. Tout fonctionne parfaitement avec l'application, super suivi.", a: "Thomas G.", d: "Serrure connectée — Écully", s: 4.5 },
+  { t: "Appelé à 2h du matin, porte ouverte à 2h40. Un vrai service d'urgence, poli et efficace même en pleine nuit.", a: "Julien C.", d: "Urgence nuit — Lyon 2e", s: 5 },
+  { t: "Blindage de la porte de mon appartement en rez-de-chaussée. Finitions très propres, on ne voit pas la différence de l'intérieur.", a: "Martine L.", d: "Blindage de porte — Villefranche-sur-Saône", s: 5 },
+  { t: "Devis clair envoyé dans l'heure, intervention le lendemain. Rapport qualité-prix excellent par rapport aux autres devis reçus.", a: "Olivier P.", d: "Changement de cylindre — Vienne", s: 4.5 },
+  { t: "Ma mère âgée s'était enfermée dehors. Ils ont été rassurants au téléphone et très doux avec elle sur place. Merci.", a: "Catherine V.", d: "Ouverture de porte — Saint-Étienne", s: 5 },
+  { t: "Boutique dépannée un samedi matin, rideau débloqué avant l'ouverture. Ils ont sauvé ma journée de ventes.", a: "Mehdi K.", d: "Rideau métallique — Grenoble", s: 5 },
+  { t: "Prix annoncé au téléphone = prix payé. C'est tellement rare dans ce métier que ça mérite 5 étoiles à soi seul.", a: "François B.", d: "Ouverture de porte — Bron", s: 5 },
+  { t: "Installation d'un judas connecté et d'un verrou supplémentaire. Ponctuel, souriant, chantier laissé propre.", a: "Isabelle M.", d: "Sécurisation — Tassin-la-Demi-Lune", s: 5 },
+  { t: "Serrure grippée qui bloquait une chambre. Réparée sans remplacement, on m'a évité une dépense inutile. Honnêteté appréciée.", a: "Hugo L.", d: "Réparation de serrure — Oullins", s: 5 },
+  { t: "Intervention rapide après effraction sur la porte du garage. Sécurisé le jour même, remplacé sous 48h.", a: "Sandrine T.", d: "Après effraction — Saint-Priest", s: 4.5 },
+  { t: "Reproduction de clés sécurisées faite rapidement et moins cher qu'en centre-ville. Je reviendrai.", a: "Antoine R.", d: "Reproduction de clés — Lyon 5e", s: 5 },
+  { t: "Porte d'entrée qui frottait et fermait mal. Rabotage nickel, la porte ferme comme au premier jour.", a: "Claire N.", d: "Rabotage de porte — Meyzieu", s: 5 },
+  { t: "Très bonne communication du début à la fin, SMS de confirmation et artisan à l'heure. Du sérieux.", a: "David W.", d: "Changement de serrure — Bourgoin-Jallieu", s: 4.5 },
+  { t: "Deux serrures remplacées dans mon salon de coiffure, garantie 2 ans et facture détaillée. Parfait pour ma compta.", a: "Leïla H.", d: "Serrures commerce — Voiron", s: 5 }
 ];
-let qi = 0;
-const qText = document.getElementById('quoteText'),
-      qAuthor = document.getElementById('quoteAuthor'),
-      qCount = document.getElementById('quoteCount');
-function showQuote(n) {
-  qi = (n + avis.length) % avis.length;
-  qText.textContent = avis[qi].t;
-  qAuthor.textContent = '';
-  const b = document.createElement('b');
-  b.textContent = avis[qi].a;
-  qAuthor.append(b, ' — ' + avis[qi].d);
-  qCount.textContent = (qi + 1) + ' / ' + avis.length;
+
+const tslTrack = document.getElementById('tslTrack');
+const tslDots = document.getElementById('tslDots');
+const tslPrev = document.getElementById('tslPrev');
+const tslNext = document.getElementById('tslNext');
+
+const starFull = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
+
+function starsHtml(s){
+  let h = '';
+  for (let i = 1; i <= 5; i++) {
+    if (s >= i) h += starFull;
+    else if (s >= i - .5) h += '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="opacity:.45"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
+  }
+  return h;
 }
-document.getElementById('prevQuote').addEventListener('click', () => showQuote(qi - 1));
-document.getElementById('nextQuote').addEventListener('click', () => showQuote(qi + 1));
+function initials(name){
+  return name.split(' ').map(w => w[0]).join('').replace('.','').toUpperCase();
+}
+
+avis.forEach(av => {
+  const slide = document.createElement('div');
+  slide.className = 'tsl-slide';
+  slide.innerHTML =
+    '<article class="tsl-card">' +
+      '<svg class="tsl-quote-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.017 21v-7.391C14.017 8.371 17.748 4.98 22 4.5l.5 2.062c-2.4.72-4.017 2.585-4.017 4.938H22V21h-7.983zM2 21v-7.391C2 8.371 5.748 4.98 10 4.5l.5 2.062C8.1 7.282 6.483 9.147 6.483 11.5H10V21H2z"/></svg>' +
+      '<span class="tsl-stars" aria-label="' + av.s + ' étoiles sur 5">' + starsHtml(av.s) + '</span>' +
+      '<p>« ' + av.t + ' »</p>' +
+      '<div class="tsl-foot">' +
+        '<span class="tsl-avatar" aria-hidden="true">' + initials(av.a) + '</span>' +
+        '<div><b>' + av.a + '</b><span>' + av.d + '</span></div>' +
+      '</div>' +
+    '</article>';
+  tslTrack.appendChild(slide);
+});
+
+let tslIndex = 0, tslDir = 1, tslTimer = null;
+function tslVisible(){
+  const w = window.innerWidth;
+  return w >= 1180 ? 3 : w >= 768 ? 2 : 1;
+}
+function tslMax(){ return avis.length - tslVisible(); }
+function tslRender(){
+  const v = tslVisible();
+  tslTrack.style.transform = 'translateX(-' + (tslIndex * 100 / v) + '%)';
+  tslPrev.disabled = tslIndex <= 0;
+  tslNext.disabled = tslIndex >= tslMax();
+  tslDots.querySelectorAll('button').forEach((d, i) =>
+    d.setAttribute('aria-current', i === tslIndex ? 'true' : 'false'));
+}
+function tslBuildDots(){
+  tslDots.innerHTML = '';
+  for (let i = 0; i <= tslMax(); i++) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Aller aux avis ' + (i + 1));
+    b.innerHTML = '<i></i>';
+    b.addEventListener('click', () => { tslIndex = i; tslPause(); tslRender(); });
+    tslDots.appendChild(b);
+  }
+}
+function tslGo(delta){
+  tslIndex = Math.min(Math.max(tslIndex + delta, 0), tslMax());
+  tslRender();
+}
+function tslAuto(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  tslTimer = setInterval(() => {
+    if (tslIndex >= tslMax()) tslDir = -1;
+    else if (tslIndex <= 0) tslDir = 1;
+    tslGo(tslDir);
+  }, 4000);
+}
+function tslPause(){
+  clearInterval(tslTimer);
+  setTimeout(tslAuto, 8000);
+}
+tslPrev.addEventListener('click', () => { tslGo(-1); tslPause(); });
+tslNext.addEventListener('click', () => { tslGo(1); tslPause(); });
+
+// glisser au doigt / à la souris
+let dragX = null;
+tslTrack.addEventListener('pointerdown', e => { dragX = e.clientX; });
+window.addEventListener('pointerup', e => {
+  if (dragX === null) return;
+  const dx = e.clientX - dragX;
+  if (dx < -30) { tslGo(1); tslPause(); }
+  else if (dx > 30) { tslGo(-1); tslPause(); }
+  dragX = null;
+});
+
+window.addEventListener('resize', () => {
+  tslIndex = Math.min(tslIndex, tslMax());
+  tslBuildDots(); tslRender();
+});
+tslBuildDots(); tslRender(); tslAuto();
 
 // Formulaire — validation au blur + état d'envoi
 const form = document.getElementById('devisForm');
